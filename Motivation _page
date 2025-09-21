@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DevOps Motivation — Teacher's Day Special</title>
+  <meta name="description" content="Teacher's Day DevOps motivation quotes" />
+  <style>
+    :root{
+      --bg1:#0f172a;  /* slate-900 */
+      --bg2:#1e293b;  /* slate-800 */
+      --card:#0b1222aa;
+      --accent:#38bdf8; /* sky-400 */
+      --glow:#22d3ee;   /* cyan-400 */
+      --text:#e5eefb;
+      --muted:#9fb4d0;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 80% -10%, #1d4ed8 0%, transparent 60%),
+        radial-gradient(900px 600px at -10% 90%, #14b8a6 0%, transparent 55%),
+        linear-gradient(160deg, var(--bg1), var(--bg2));
+      overflow-x:hidden;
+    }
+
+    /* subtle floating shapes */
+    .bubble{
+      position:absolute; inset:auto;
+      width:18vmin; height:18vmin; border-radius:50%;
+      filter: blur(40px) saturate(140%);
+      opacity:.45; z-index:0;
+      animation: float 18s linear infinite;
+    }
+    .bubble.b1{background:#22d3ee; top:6%; left:8%;}
+    .bubble.b2{background:#60a5fa; bottom:8%; right:10%; animation-duration:22s;}
+    .bubble.b3{background:#a78bfa; top:30%; right:30%; animation-duration:26s;}
+    @keyframes float{
+      0%{transform:translateY(0) translateX(0)}
+      50%{transform:translateY(-20px) translateX(10px)}
+      100%{transform:translateY(0) translateX(0)}
+    }
+
+    .wrap{
+      min-height:100%;
+      display:grid;
+      place-items:center;
+      padding:24px;
+    }
+    .card{
+      position:relative;
+      width:min(900px, 92vw);
+      background:linear-gradient(180deg, #0b1222cc, #0b122299);
+      border:1px solid #2a3b57;
+      border-radius:24px;
+      padding:28px;
+      box-shadow:
+        0 20px 60px #000a,
+        inset 0 0 0 1px #0006;
+      backdrop-filter: blur(10px) saturate(140%);
+      z-index:1;
+    }
+    .header{
+      display:flex; gap:14px; align-items:center; justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+    }
+    .logo{
+      width:44px; height:44px; border-radius:12px;
+      background: radial-gradient(100% 100% at 30% 20%, var(--glow), transparent 70%),
+                  linear-gradient(135deg, #0ea5e9, #6366f1);
+      box-shadow: 0 0 20px #22d3ee66, 0 10px 30px #0ea5e944;
+    }
+    h1{
+      font-size:clamp(20px, 3.3vw, 30px);
+      margin:0;
+      letter-spacing:.2px;
+    }
+    .tag{
+      font-size:13px;
+      color:var(--muted);
+      padding:6px 10px; border:1px solid #2c3e60; border-radius:999px;
+      background:#0e162a88;
+    }
+    .teacher-ribbon{
+      margin-top:14px;
+      display:inline-block;
+      padding:6px 12px;
+      border-radius:10px;
+      border:1px dashed #3b82f6aa;
+      color:#c7e1ff;
+      font-size:13px;
+      background:#0b1222cc;
+    }
+
+    .quote{
+      margin:26px 0 16px;
+      font-size:clamp(20px, 2.8vw, 28px);
+      line-height:1.35;
+      font-weight:600;
+      letter-spacing:.2px;
+      text-shadow: 0 1px 0 #0008;
+    }
+    .byline{
+      color:var(--muted); font-size:14px;
+    }
+
+    .grid{
+      display:grid; gap:14px; margin-top:20px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+    .pill{
+      border:1px solid #2a3b57; border-radius:14px; padding:12px 14px;
+      background:#0e162ab0; color:#cfe4ff; font-size:14px;
+      display:flex; align-items:center; gap:10px; justify-content:space-between;
+    }
+    .progress{
+      --p:0%;
+      position:relative; height:8px; background:#1f2c47; border-radius:999px; overflow:hidden;
+    }
+    .progress > i{
+      position:absolute; left:0; top:0; bottom:0; width:var(--p);
+      background:linear-gradient(90deg, var(--accent), var(--glow));
+      box-shadow:0 0 16px #22d3ee55 inset;
+    }
+
+    .controls{
+      margin-top:18px; display:flex; flex-wrap:wrap; gap:10px;
+    }
+    button{
+      cursor:pointer;
+      border:1px solid #274168;
+      background:#0e162a;
+      color:#dfeeff;
+      padding:10px 14px;
+      border-radius:12px;
+      font-size:14px;
+      transition: transform .06s ease, box-shadow .2s ease, border-color .2s;
+      box-shadow: 0 6px 18px #0006;
+    }
+    button:hover{ transform: translateY(-1px); border-color:#3a78ff; box-shadow:0 8px 22px #0008;}
+    button:active{ transform: translateY(0); }
+
+    .footer{
+      margin-top:18px; color:#9fb4d0; font-size:12px; display:flex; justify-content:space-between; gap:8px; flex-wrap:wrap;
+      border-top:1px solid #1f2c47; padding-top:12px;
+    }
+
+    /* confetti for Teacher's Day click */
+    .confetti{
+      position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:9999;
+    }
+    .confetti i{
+      position:absolute; width:8px; height:14px; border-radius:2px;
+      background: white; opacity:.9;
+      top:-20px;
+      animation: drop 1200ms linear forwards;
+    }
+    @keyframes drop{
+      to{ transform: translateY(110vh) rotate(360deg); opacity:1;}
+    }
+  </style>
+</head>
+<body>
+  <div class="bubble b1"></div>
+  <div class="bubble b2"></div>
+  <div class="bubble b3"></div>
+
+  <div class="wrap">
+    <main class="card" role="main" aria-label="DevOps Motivation">
+      <div class="header">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <h1>DevOps Motivation</h1>
+            <span class="tag" id="todayTag">Teacher’s Day Special • </span>
+          </div>
+        </div>
+        <span class="teacher-ribbon">Thank you, Gurus & Mentors! 🙏</span>
+      </div>
+
+      <p class="quote" id="quoteText">“Ship small, ship often. Feedback is your fastest teacher.”</p>
+      <p class="byline" id="quoteBy">— DevOps Mindset</p>
+
+      <div class="grid" aria-label="Daily Focus">
+        <div class="pill">
+          <span>Learn 1 concept</span>
+          <div class="progress" style="--p: 0%;" title="Learning progress"><i></i></div>
+        </div>
+        <div class="pill">
+          <span>Automate 1 task</span>
+          <div class="progress" style="--p: 0%;"><i></i></div>
+        </div>
+        <div class="pill">
+          <span>Practice 20 mins</span>
+          <div class="progress" style="--p: 0%;"><i></i></div>
+        </div>
+        <div class="pill">
+          <span>Help someone</span>
+          <div class="progress" style="--p: 0%;"><i></i></div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="newBtn" title="New quote">✨ New Quote</button>
+        <button id="copyBtn" title="Copy quote to clipboard">📋 Copy</button>
+        <button id="shareBtn" title="Share">🔗 Share</button>
+        <button id="confettiBtn" title="Celebrate Teacher's Day!">🎉 Celebrate</button>
+      </div>
+
+      <div class="footer">
+        <span id="streakText">Streak: <b>0</b> days</span>
+        <span>Made with ⚙️ Dev + 🧠 Ops + 🙏 Teachers</span>
+      </div>
+    </main>
+  </div>
+
+  <div class="confetti" id="confetti"></div>
+
+  <script>
+    // Quotes (Teacher’s Day + DevOps energy)
+    const QUOTES = [
+      { q: "Automate the boring, celebrate the learning.", a: "DevOps Teacher" },
+      { q: "Small daily improvements beat rare home runs.", a: "Kaizen Mindset" },
+      { q: "CI/CD is not tools, it’s trust on repeat.", a: "Delivery Wisdom" },
+      { q: "Logs are the diary of your systems—read them daily.", a: "Ops Guru" },
+      { q: "Ship. Measure. Learn. Iterate.", a: "Lean Dev" },
+      { q: "Your bash history is your progress report.", a: "Terminal Sensei" },
+      { q: "Version control your life: commit, don’t quit.", a: "Git Mentor" },
+      { q: "Treat incidents as teachers, not enemies.", a: "SRE Sage" },
+      { q: "If it hurts, do it more often—until it doesn’t.", a: "Agile Axiom" },
+      { q: "Good tests are kind teachers; they reveal truth early.", a: "Quality Coach" }
+    ];
+
+    const isTeachersDay = (() => {
+      const d = new Date();
+      // India celebrates Teacher's Day on Sept 5
+      return d.getMonth() === 8 && d.getDate() === 5;
+    })();
+
+    // UI elements
+    const quoteText = document.getElementById('quoteText');
+    const quoteBy = document.getElementById('quoteBy');
+    const newBtn = document.getElementById('newBtn');
+    const copyBtn = document.getElementById('copyBtn');
+    const shareBtn = document.getElementById('shareBtn');
+    const streakText = document.getElementById('streakText');
+    const tag = document.getElementById('todayTag');
+    const confettiWrap = document.getElementById('confetti');
+    const confettiBtn = document.getElementById('confettiBtn');
+
+    // Teacher’s Day tag tweak
+    tag.textContent = isTeachersDay ? "Teacher’s Day Special • Thank you, Teachers!" : "Daily DevOps • Keep shipping";
+
+    // Streak logic via localStorage
+    const STREAK_KEY = "devops_streak";
+    const LAST_KEY = "devops_last_day";
+    function initStreak(){
+      const today = new Date(); today.setHours(0,0,0,0);
+      const last = localStorage.getItem(LAST_KEY);
+      let streak = parseInt(localStorage.getItem(STREAK_KEY) || "0", 10);
+
+      if(!last){
+        streak = 1;
+      } else {
+        const d = new Date(parseInt(last, 10));
+        const diff = (today - d) / 86400000;
+        if(diff === 1) streak += 1;
+        else if(diff > 1) streak = 1; // reset if gap
+      }
+      localStorage.setItem(STREAK_KEY, String(streak));
+      localStorage.setItem(LAST_KEY, String(today.getTime()));
+      streakText.innerHTML = `Streak: <b>${streak}</b> days`;
+    }
+
+    // Quote functions
+    function pickQuote(){
+      const { q, a } = QUOTES[Math.floor(Math.random() * QUOTES.length)];
+      quoteText.textContent = `“${q}”`;
+      quoteBy.textContent = `— ${a}`;
+    }
+
+    async function copyQuote(){
+      const text = `${quoteText.textContent} ${quoteBy.textContent}`;
+      try{
+        await navigator.clipboard.writeText(text);
+        toast("Copied to clipboard");
+      }catch{
+        // fallback
+        const ta = document.createElement('textarea');
+        ta.value = text; document.body.appendChild(ta);
+        ta.select(); document.execCommand('copy'); ta.remove();
+        toast("Copied");
+      }
+    }
+
+    async function shareQuote(){
+      const text = `${quoteText.textContent} ${quoteBy.textContent}`;
+      if(navigator.share){
+        try { await navigator.share({ text }); }
+        catch(e){ /* user canceled */ }
+      } else {
+        copyQuote();
+      }
+    }
+
+    // Tiny toast
+    function toast(msg){
+      const t = document.createElement('div');
+      t.textContent = msg;
+      t.style.cssText = `
+        position:fixed; left:50%; top:20px; transform:translateX(-50%);
+        background:#0b1222ee; color:#dff1ff; border:1px solid #37507d; 
+        padding:10px 14px; border-radius:10px; z-index:99999; 
+        box-shadow:0 10px 28px #0008; font-size:14px;
+      `;
+      document.body.appendChild(t);
+      setTimeout(()=>{ t.remove(); }, 1500);
+    }
+
+    // Confetti for Teacher's Day
+    function confetti(){
+      for(let i=0; i<90; i++){
+        const s = document.createElement('i');
+        const left = Math.random()*100;
+        const delay = Math.random()*600;
+        const colors = ['#22d3ee','#60a5fa','#a78bfa','#f472b6','#34d399','#fbbf24'];
+        s.style.left = left + 'vw';
+        s.style.background = colors[i % colors.length];
+        s.style.animationDelay = delay + 'ms';
+        confettiWrap.appendChild(s);
+        setTimeout(()=>s.remove(), 1600);
+      }
+    }
+
+    // Progress bars: click to mark done
+    document.querySelectorAll('.progress').forEach(p=>{
+      p.addEventListener('click', ()=>{
+        const done = p.style.getPropertyValue('--p') === '100%';
+        p.style.setProperty('--p', done ? '0%' : '100%');
+      });
+    });
+
+    // Events
+    newBtn.addEventListener('click', pickQuote);
+    copyBtn.addEventListener('click', copyQuote);
+    shareBtn.addEventListener('click', shareQuote);
+    confettiBtn.addEventListener('click', confetti);
+
+    // Init
+    initStreak();
+    if(isTeachersDay) setTimeout(confetti, 500);
+  </script>
+</body>
+</html>
